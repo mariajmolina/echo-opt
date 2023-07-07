@@ -7,6 +7,9 @@ import os
 import pandas as pd
 import logging
 import warnings
+import gc
+import torch
+
 
 warnings.filterwarnings("ignore")
 
@@ -156,6 +159,9 @@ class BaseObjective:
 
     def __call__(self, trial):
 
+        gc.collect()
+        torch.cuda.empty_cache()
+        
         """Secondary set-up of node_id and devices"""
         if not self._summon:
             self.set_properties()
