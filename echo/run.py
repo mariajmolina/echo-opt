@@ -107,7 +107,7 @@ def main():
     _log = False if "log" not in hyper_config else hyper_config["log"]
     if _log:
         fh = logging.FileHandler(
-            os.path.join(save_path, "log.txt"),
+            os.path.join(save_path, f"log{str(hyper_config["lognum"])}.txt"),
             mode="a+",  # always initiate / append
             encoding="utf-8",
         )
