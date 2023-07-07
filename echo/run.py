@@ -225,6 +225,7 @@ def main():
                 objective,
                 n_trials=1,
                 timeout=estimated_run_time,
+                gc_after_trial=True,
                 # catch = (ValueError,) # Later to be added as a config option
             )
         except KeyboardInterrupt:
