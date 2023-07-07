@@ -39,6 +39,21 @@ def args():
         help="Path to the model configuration containing your inputs.",
     )
     parser.add_argument(
+        "secondfile",
+        type=str,
+        help="Path to the hyperparameter configuration containing your inputs.",
+    )
+    parser.add_argument(
+        "thirdfile",
+        type=str,
+        help="Path to the hyperparameter configuration containing your inputs.",
+    )
+    parser.add_argument(
+        "fourthfile",
+        type=str,
+        help="Path to the hyperparameter configuration containing your inputs.",
+    )
+    parser.add_argument(
         "-n",
         "--study_name",
         dest="study_name",
