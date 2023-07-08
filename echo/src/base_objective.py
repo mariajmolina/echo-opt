@@ -25,10 +25,10 @@ class BaseObjective:
         self._summon = False
 
     def set_properties(self, node_id=None, device="cpu"):
-        if isinstance(device, list):
-            self.device = [f"cuda:{d}" for d in device]
-        else:
-            self.device = f"cuda:{device}" if device != "cpu" else "cpu"
+        #if isinstance(device, list):
+        #    self.device = [f"cuda:{d}" for d in device]
+        #else:
+        #    self.device = f"cuda:{device}" if device != "cpu" else "cpu"
         self._summon = True
         self.worker_index = node_id
         self.results = defaultdict(list)
@@ -50,7 +50,7 @@ class BaseObjective:
         logger.info(
             f"\tinitializing an objective to be optimized with metric {self.metric}"
         )
-        logger.info(f"\tusing device(s) {self.device}")
+        #logger.info(f"\tusing device(s) {self.device}")
         logger.info(f"\tsaving study/trial results to local file {self.results_fn}")
 
     def update_config(self, trial):
