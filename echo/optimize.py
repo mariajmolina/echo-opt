@@ -32,26 +32,10 @@ def args():
         type=str,
         help="Path to the hyperparameter configuration containing your inputs.",
     )
-
     parser.add_argument(
         "model",
         type=str,
         help="Path to the model configuration containing your inputs.",
-    )
-    parser.add_argument(
-        "secondfile",
-        type=str,
-        help="Path to the hyperparameter configuration containing your inputs.",
-    )
-    parser.add_argument(
-        "thirdfile",
-        type=str,
-        help="Path to the hyperparameter configuration containing your inputs.",
-    )
-    parser.add_argument(
-        "fourthfile",
-        type=str,
-        help="Path to the hyperparameter configuration containing your inputs.",
     )
     parser.add_argument(
         "-n",
@@ -293,9 +277,9 @@ def prepare_pbs_launch_script(hyper_config: str, model_config: str) -> List[str]
         logging.warning(
             "Check the log and stdout/err files if simulations are dying to see the errors"
         )
-        for iter_, (copy, hnum) in enumerate(zip(range(hyper_config["pbs"]["trials_per_job"]), np.array([1,3,4,5]))):
+        for iter_, copy in enumerate(range(hyper_config["pbs"]["trials_per_job"])):
             pbs_options.append(
-                f"CUDA_VISIBLE_DEVICES={iter_}, {aiml_path} {sys.argv[hnum]} {sys.argv[2]} -n {pbs_jobid} &"
+                f"CUDA_VISIBLE_DEVICES={iter_}, {aiml_path} {sys.argv[1]} {sys.argv[2]} -n {pbs_jobid} &"
             )
             # allow some time between calling instances of run
             pbs_options.append("sleep 0.5")
