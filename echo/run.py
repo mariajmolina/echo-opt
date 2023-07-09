@@ -106,9 +106,8 @@ def main():
     """ Stream output to file """
     _log = False if "log" not in hyper_config else hyper_config["log"]
     if _log:
-        lognum = str(hyper_config["lognum"])
         fh = logging.FileHandler(
-            os.path.join(save_path, f"log{lognum}.txt"),
+            os.path.join(save_path, "log.txt"),
             mode="a+",  # always initiate / append
             encoding="utf-8",
         )
